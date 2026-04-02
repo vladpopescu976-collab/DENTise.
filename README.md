@@ -1,62 +1,109 @@
-# Dentise Website – Ghid de Publicare (Vercel + Resend)
+# DENTise Final
+
+Website de prezentare pentru `Dentise Laser Dentistry`, optimizat pentru desktop și mobil, construit ca site static.
+
+## Ce include site-ul
+- pagină principală premium pentru clinică stomatologică
+- secțiune de servicii și beneficii pentru tehnologia laser
+- formular de programare conectat la Formspree
+- pagină de mulțumire după trimiterea formularului
+- pagini legale:
+  - `informatii-legale.html`
+  - `politica-confidentialitate.html`
+  - `politica-cookies.html`
+- linkuri utile pentru consumatori:
+  - SAL ANPC
+  - cerere SAL
+  - ANSPDCP
+- badge-uri ANPC/SAL și SOL în footer
+- favicon și logo integrate în site
+
+## Stack
+- `HTML`
+- `CSS`
+- `JavaScript`
+- `Formspree` pentru trimiterea formularului de programare
 
 ## Structura proiectului
-```
-dentise-project/
+```text
+/Users/vladpopescu/Downloads/dentise-final
 ├── index.html
-├── api/
-│   └── programare.js
-├── package.json
-├── vercel.json
+├── styles.css
+├── app.js
+├── multumim.html
+├── multumim.css
+├── informatii-legale.html
+├── politica-confidentialitate.html
+├── politica-cookies.html
+├── legal.css
+├── assets/
+│   ├── dentise-logo.png
+│   ├── favicon-32.png
+│   └── apple-touch-icon.png
 └── README.md
 ```
 
----
+## Cum funcționează formularul
+Formularul din `index.html` trimite cererile de programare către endpoint-ul Formspree configurat în proiect.
 
-## Pasul 1 – Cont Resend (gratuit, 3000 emailuri/lună)
-
-1. Mergi la https://resend.com → Sign up
-2. Verifică-ți adresa de email
-3. Du-te la **API Keys → Create API Key**
-   - Nume: `Dentise`
-   - Permission: **Full Access**
-   - Copiază cheia (începe cu `re_xxx`)
-
-> ⚠️ La început poți trimite doar către adresa cu care te-ai înregistrat.
-> Pentru a trimite către orice adresă, verifică un domeniu propriu în Settings → Domains.
-> Dacă nu ai domeniu, înregistrează-te cu `vladpopescu976@gmail.com` și trimite tot acolo.
-
----
-
-## Pasul 2 – Deploy pe Vercel
-
-**Opțiunea A – GitHub (recomandat):**
-1. Urcă folderul pe github.com (New repository → upload files)
-2. vercel.com → New Project → Import from GitHub → Deploy
-
-**Opțiunea B – Terminal:**
-```bash
-npm install -g vercel
-cd dentise-project
-vercel
+Endpoint folosit acum:
+```text
+https://formspree.io/f/xqeyaoag
 ```
 
----
+După submit reușit:
+- utilizatorul este redirecționat către `multumim.html`
+- clinică primește datele pe email prin Formspree
 
-## Pasul 3 – Variabile de mediu în Vercel
+## Câmpurile formularului
+- nume complet
+- telefon
+- serviciu
+- dată preferată
+- interval orar
+- mesaj opțional
+- confirmare că utilizatorul a citit politicile
 
-Dashboard → proiectul tău → **Settings → Environment Variables**:
+## Reguli implementate
+- formularul validează câmpurile obligatorii
+- nu permite selectarea weekendului pentru programare
+- cere acceptarea politicii de confidențialitate și politicii de cookies
+- afișează mesaje de eroare dacă submit-ul eșuează
 
-| Nume | Valoare |
-|------|---------|
-| `RESEND_API_KEY` | `re_xxxxxxxxxxxxxxxxx` |
+## Publicare
+Fiind un site static, poate fi publicat ușor pe:
+- `GitHub Pages`
+- `Netlify`
+- `Vercel`
 
-Save → **Redeploy**
+Este important ca toate fișierele să fie urcate împreună, inclusiv:
+- `assets/`
+- `multumim.html`
+- paginile legale
 
----
+## Ce trebuie verificat înainte de publicare
+1. Formularul Formspree să fie activ și legat de adresa corectă de email.
+2. Toate fișierele din `assets/` să fie încărcate.
+3. Linkurile din footer să funcționeze.
+4. Paginile legale să fie accesibile.
+5. Dacă ai date juridice exacte ale operatorului, să le completezi în `informatii-legale.html`.
 
-## Gata!
+## Observații
+- proiectul nu mai folosește backend propriu
+- nu mai folosește Resend, Vercel Functions sau SMTP
+- harta Google Maps este încărcată doar la acțiunea utilizatorului
+- site-ul este gândit pentru prezentare și solicitări de programare, nu pentru conturi de utilizator
 
-- Site live la: `https://dentise-xxx.vercel.app`
-- Programările ajung direct la `vladpopescu976@gmail.com`
-- Poți conecta un domeniu propriu din Vercel → Settings → Domains
+## Personalizare rapidă
+Dacă vrei să schimbi conținutul principal:
+- text și structură: `index.html`
+- stiluri principale: `styles.css`
+- logică formular și interacțiuni: `app.js`
+- pagină de confirmare: `multumim.html`, `multumim.css`
+- pagini legale: `informatii-legale.html`, `politica-confidentialitate.html`, `politica-cookies.html`, `legal.css`
+
+## Contact clinică în proiect
+- Nume: `Dentise Laser Dentistry`
+- Telefon: `0757 188 573`
+- Adresă: `Piața Revoluției 7A, Botoșani`
+- Program: `Luni–Vineri 09:00–17:00`
